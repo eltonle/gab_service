@@ -86,11 +86,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <!-- <a href="{{route('purchase.edit', $item->id)}}" class="btn btn-sm btn-outline-info waves-light"><i class="fas fa-pen-alt"></i></a> -->
-                                    <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a> -->
-                                    @if($item->status=="0")
+
+                                    @if($item->status=='0')
                                     <button type="button" title="supprimer" class="btn  btn-outline-danger waves-effect waves-light btn-sm delete-btn " data-supplier-id="{{ $item->id }}">
-                                        <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                     @endif
                                 </td>

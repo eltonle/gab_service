@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
@@ -57,6 +58,9 @@
             font-style: normal;
         }
     </style>
+
+    <!-- CDN ChartsJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -126,8 +130,9 @@
 
     <script src="{{asset('assets/js/pages/form-advanced.init.js')}}"></script>
 
-    <!-- apexcharts -->
-    <script src="{{asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+    <!-- Chart JS -->
+    <script src="{{asset('assets/libs/chart.js/Chart.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/pages/chartjs.init.js')}}"></script>
 
     <!-- jquery.vectormap map -->
     <script src="{{asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>

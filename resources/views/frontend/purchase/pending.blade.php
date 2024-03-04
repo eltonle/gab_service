@@ -139,7 +139,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Si l'utilisateur confirme, rediriger vers la route de suppression avec l'ID du fournisseur
-                        window.location.href = "/purchase/approve/" + supplierId;
+                        window.location.href = "/achats/approve/" + supplierId;
                     }
                 });
             });

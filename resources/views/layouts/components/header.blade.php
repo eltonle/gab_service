@@ -27,73 +27,6 @@
                 <i class="ri-menu-2-line align-middle"></i>
             </button>
 
-
-
-            <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
-                <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                    Mega Menu
-                    <i class="mdi mdi-chevron-down"></i>
-                </button>
-                <div class="dropdown-menu dropdown-megamenu">
-                    <div class="row">
-                        <div class="col-sm-8">
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14">UI Components</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">Lightbox</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14">Applications</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">Ecommerce</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <h5 class="font-size-14">Extra Pages</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">Light Sidebar</a>
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5 class="font-size-14">UI Components</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">Lightbox</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                                <div class="col-sm-5">
-                                    <div>
-                                        <img src="assets/images/megamenu-img.png" alt="megamenu-img" class="img-fluid mx-auto d-block">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
 
         <div class="d-flex">
@@ -121,14 +54,12 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{route('admin.profile')}}"><i class="ri-user-line align-middle me-1"></i> Profile</a>
-                    <a class="dropdown-item" href="{{ route('change.password') }}"><i class="ri-wallet-2-line align-middle me-1"></i> Change Password</a>
-                    <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end mt-1">11</span><i class="ri-settings-2-line align-middle me-1"></i> Settings</a>
-                    <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle me-1"></i> Lock screen</a>
+                    <a class="dropdown-item" href="{{route('admin.profile')}}"><i class=" fas fa-user-cog align-middle me-1"></i> Profil</a>
+                    <a class="dropdown-item" href="{{ route('change.password') }}"><i class="fas fa-user-lock align-middle me-1"></i> Changer mot de pass</a>
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="dropdown-item text-danger" href=""><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</button>
+                        <button type="submit" class="dropdown-item text-danger" href=""><i class="fas fa-power-off align-middle me-1 text-danger"></i> Se Deconnecter</button>
                     </form>
                 </div>
             </div>

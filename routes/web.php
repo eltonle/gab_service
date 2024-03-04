@@ -7,8 +7,11 @@ use App\Http\Controllers\Backend\DefaultController;
 use App\Http\Controllers\Backend\InvoiceController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\PurchaseController;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\StockController;
 use App\Http\Controllers\Backend\SupplierController;
+use App\Http\Controllers\Backend\TaskController;
+use App\Http\Controllers\Backend\TechnicalController;
 use App\Http\Controllers\Backend\UnitController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +41,8 @@ Route::get('/dashboard', function () {
 // });
 Route::middleware('auth')->group(function () {
 
+    // ESSAI CHARJS DATA
+    Route::get('/home/{year}', [App\Http\Controllers\Backend\DashboardController::class, 'getDatajs']);
 
     Route::prefix('user')->controller(AdminController::class)->group(function () {
         Route::get('/profile/view', 'profile')->name('admin.profile');
@@ -109,7 +114,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // Achat
-    Route::prefix('purchase')->controller(PurchaseController::class)->group(function () {
+    Route::prefix('achats')->controller(PurchaseController::class)->group(function () {
         Route::get('/view', 'index')->name('purchase.index');
         Route::get('/create', 'create')->name('purchase.create');
         Route::post('/store', 'store')->name('purchase.store');
@@ -152,11 +157,45 @@ Route::middleware('auth')->group(function () {
         Route::get('/rapport/produit/pdf', 'productWisePdf')->name('stock.report.product.pdf');
     });
 
+    // techniciens
+    Route::prefix('techniciens')->controller(TechnicalController::class)->group(function () {
+        Route::get('/view', 'index')->name('technical.index');
+        Route::get('/create', 'create')->name('technical.create');
+        Route::post('/store', 'store')->name('technical.store');
+        Route::get('/edit/{id}', 'edit')->name('technical.edit');
+        Route::post('/update/{id}', 'update')->name('technical.update');
+        Route::get('/delete/{id}', 'delete')->name('technical.delete');
+    });
+
+    // services
+    Route::prefix('sercices')->controller(ServiceController::class)->group(function () {
+        Route::get('/view', 'index')->name('service.index');
+        Route::get('/create', 'create')->name('service.create');
+        Route::post('/store', 'store')->name('service.store');
+        Route::get('/edit/{technical_id}', 'edit')->name('service.edit');
+        Route::post('/update/{technical_id}', 'update')->name('service.update');
+        Route::get('/details/{technical_id}', 'details')->name('service.details');
+
+
+        Route::get('/delete/{id}', 'delete')->name('service.delete');
+    });
+
+    // units
+    Route::prefix('taches')->controller(TaskController::class)->group(function () {
+        Route::get('/view', 'index')->name('task.index');
+        Route::get('/create', 'create')->name('task.create');
+        Route::post('/store', 'store')->name('task.store');
+        Route::get('/edit/{id}', 'edit')->name('task.edit');
+        Route::post('/update/{id}', 'update')->name('task.update');
+        Route::get('/delete/{id}', 'delete')->name('task.delete');
+    });
+
     //DefaultController
     Route::get('/get-category', [DefaultController::class, 'getCategory'])->name('get-category');
     Route::get('/get-product', [DefaultController::class, 'getProduct'])->name('get-product');
     Route::get('/get-stock', [DefaultController::class, 'getStock'])->name('check-product-stock');
-    Route::get('payments', [DefaultController::class, 'getPayment'])->name('getPayment');
+    Route::get('payments', [DefaultController::class, 'getPayment'])->name('modalDetails');
+    Route::post('/update-payment', [DefaultController::class, 'updatePayment'])->name('update-payment');
 });
 
 

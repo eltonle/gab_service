@@ -6,12 +6,12 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Dashboard</h4>
+            <h4 class="mb-sm-0">TABLEAU DE BORD</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Upcube</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tableau </a></li>
+                    <li class="breadcrumb-item active">Bord</li>
                 </ol>
             </div>
 
@@ -19,20 +19,35 @@
     </div>
 </div>
 <!-- end page title -->
-
+<div class="row mb-2">
+    <div>
+        <div class="text-right filtre">
+            <label for="year">Filtre :</label>
+            <select id="year">
+                <!-- Remplacez les années par les années disponibles dans votre base de données -->
+                <option value="day">aujourd'hui</option>
+                <option value="7">7 derniers jours</option>
+                <option value="30">30 derniers jours</option>
+                <option value="lastMonth">Le mois dernier</option>
+                <option value="thisMonth">Le mois en cours</option>
+                <option value="thisYear"> Année en cours</option>
+                <option value="lastYear">Année derniere</option>
+            </select>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-xl-3 col-md-6">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <p class="text-truncate font-size-14 mb-2">Total Sales</p>
-                        <h4 class="mb-2">1452</h4>
-                        <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
+                        <p class="text-truncate font-size-14 mb-2"> Total versements net</p>
+                        <h4 class="mb-2" id="totalPayeDiv"></h4>
                     </div>
                     <div class="avatar-sm">
                         <span class="avatar-title bg-light text-primary rounded-3">
-                            <i class="ri-shopping-cart-2-line font-size-24"></i>
+                            <i class="mdi mdi-currency-usd font-size-24"></i>
                         </span>
                     </div>
                 </div>
@@ -44,9 +59,8 @@
             <div class="card-body">
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <p class="text-truncate font-size-14 mb-2">New Orders</p>
-                        <h4 class="mb-2">938</h4>
-                        <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-12 me-2"><i class="ri-arrow-right-down-line me-1 align-middle"></i>1.09%</span>from previous period</p>
+                        <p class="text-truncate font-size-14 mb-2"> Total somme perçue</p>
+                        <h4 class="mb-2" id="totalNetPayeDiv"></h4>
                     </div>
                     <div class="avatar-sm">
                         <span class="avatar-title bg-light text-success rounded-3">
@@ -62,13 +76,12 @@
             <div class="card-body">
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <p class="text-truncate font-size-14 mb-2">New Users</p>
-                        <h4 class="mb-2">8246</h4>
-                        <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>16.2%</span>from previous period</p>
+                        <p class="text-truncate font-size-14 mb-2">Total somme credit</p>
+                        <h4 class="mb-2" id="totalDueDiv"></h4>
                     </div>
                     <div class="avatar-sm">
                         <span class="avatar-title bg-light text-primary rounded-3">
-                            <i class="ri-user-3-line font-size-24"></i>
+                            <i class="mdi mdi-currency-usd font-size-24"></i>
                         </span>
                     </div>
                 </div>
@@ -80,13 +93,12 @@
             <div class="card-body">
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <p class="text-truncate font-size-14 mb-2">Unique Visitors</p>
-                        <h4 class="mb-2">29670</h4>
-                        <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>11.7%</span>from previous period</p>
+                        <p class="text-truncate font-size-14 mb-2">Total somme remise</p>
+                        <h4 class="mb-2" id="totalDetailsPaiementsDiv"></h4>
                     </div>
                     <div class="avatar-sm">
                         <span class="avatar-title bg-light text-success rounded-3">
-                            <i class="mdi mdi-currency-btc font-size-24"></i>
+                            <i class="mdi mdi-currency-usd font-size-24"></i>
                         </span>
                     </div>
                 </div>
@@ -98,170 +110,169 @@
 
 <!-- end row -->
 
+
+
+
+
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-                <div class="dropdown float-end">
-                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="mdi mdi-dots-vertical"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                    </div>
-                </div>
 
-                <h4 class="card-title mb-4">Latest Transactions</h4>
+                <!-- <h4 class="card-title mb-4">Bar de progression</h4> -->
 
-                <div class="table-responsive">
-                    <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Status</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th style="width: 120px;">Salary</th>
-                            </tr>
-                        </thead><!-- end thead -->
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <h6 class="mb-0">Charles Casey</h6>
-                                </td>
-                                <td>Web Developer</td>
-                                <td>
-                                    <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                </td>
-                                <td>
-                                    23
-                                </td>
-                                <td>
-                                    04 Apr, 2021
-                                </td>
-                                <td>$42,450</td>
-                            </tr>
-                            <!-- end -->
-                            <tr>
-                                <td>
-                                    <h6 class="mb-0">Alex Adams</h6>
-                                </td>
-                                <td>Python Developer</td>
-                                <td>
-                                    <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-warning align-middle me-2"></i>Deactive</div>
-                                </td>
-                                <td>
-                                    28
-                                </td>
-                                <td>
-                                    01 Aug, 2021
-                                </td>
-                                <td>$25,060</td>
-                            </tr>
-                            <!-- end -->
-                            <tr>
-                                <td>
-                                    <h6 class="mb-0">Prezy Kelsey</h6>
-                                </td>
-                                <td>Senior Javascript Developer</td>
-                                <td>
-                                    <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                </td>
-                                <td>
-                                    35
-                                </td>
-                                <td>
-                                    15 Jun, 2021
-                                </td>
-                                <td>$59,350</td>
-                            </tr>
-                            <!-- end -->
-                            <tr>
-                                <td>
-                                    <h6 class="mb-0">Ruhi Fancher</h6>
-                                </td>
-                                <td>React Developer</td>
-                                <td>
-                                    <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                </td>
-                                <td>
-                                    25
-                                </td>
-                                <td>
-                                    01 March, 2021
-                                </td>
-                                <td>$23,700</td>
-                            </tr>
-                            <!-- end -->
-                            <tr>
-                                <td>
-                                    <h6 class="mb-0">Juliet Pineda</h6>
-                                </td>
-                                <td>Senior Web Designer</td>
-                                <td>
-                                    <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                </td>
-                                <td>
-                                    38
-                                </td>
-                                <td>
-                                    01 Jan, 2021
-                                </td>
-                                <td>$69,185</td>
-                            </tr>
-                            <!-- end -->
-                            <tr>
-                                <td>
-                                    <h6 class="mb-0">Den Simpson</h6>
-                                </td>
-                                <td>Web Designer</td>
-                                <td>
-                                    <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-warning align-middle me-2"></i>Deactive</div>
-                                </td>
-                                <td>
-                                    21
-                                </td>
-                                <td>
-                                    01 Sep, 2021
-                                </td>
-                                <td>$37,845</td>
-                            </tr>
-                            <!-- end -->
-                            <tr>
-                                <td>
-                                    <h6 class="mb-0">Mahek Torres</h6>
-                                </td>
-                                <td>Senior Laravel Developer</td>
-                                <td>
-                                    <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                </td>
-                                <td>
-                                    32
-                                </td>
-                                <td>
-                                    20 May, 2021
-                                </td>
-                                <td>$55,100</td>
-                            </tr>
-                            <!-- end -->
-                        </tbody><!-- end tbody -->
-                    </table> <!-- end table -->
-                </div>
-            </div><!-- end card -->
-        </div><!-- end card -->
+
+                <canvas id="myChart" height="200"></canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <!-- <h4 class="card-title mb-4">Column Chart</h4> -->
+
+                <!-- <canvas id="lineChart" height="300"></canvas> -->
+                <canvas id="myChartSecond" height="280" width="479" style="display: block; width: 479px; height: 260px;" class="chartjs-render-monitor"></canvas>
+            </div>
+        </div><!--end card-->
     </div>
-    <!-- end col -->
-
 </div>
 <!-- end row -->
 
 
+
+@endsection
+
+@section('js')
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctxSecond = document.getElementById('myChartSecond').getContext('2d');
+    var myChart;
+    var myChartSecond;
+
+
+    function updateChart(year) {
+        // Fonction pour mettre à jour le graphique en fonction de l'année sélectionnée
+        fetch(`/home/${year}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(year);
+                console.log(data);
+                // Accédez aux données dans l'objet JSON
+                var transactions = data[0]; // Remplacez 'transactions' par le nom correct de la clé dans votre objet JSON
+                var details = data[1]; // Remplacez 'transactions' par le nom correct de la clé dans votre objet JSON
+
+                // Organisez les données par mois
+                var months = Array.from({
+                    length: 12
+                }, (_, i) => i + 1);
+                var payeData = months.map(month => transactions.filter(item => (new Date(item.created_at).getMonth() + 1) === month).reduce((acc, cur) => acc + cur.paid_amount, 0));
+                var dueData = months.map(month => transactions.filter(item => (new Date(item.created_at).getMonth() + 1) === month).reduce((acc, cur) => acc + cur.due_amount, 0));
+                var netPayeData = months.map(month => transactions.filter(item => (new Date(item.created_at).getMonth() + 1) === month).reduce((acc, cur) => acc + cur.total_amount, 0));
+                var discounts = months.map(month => transactions.filter(item => (new Date(item.created_at).getMonth() + 1) === month).reduce((acc, cur) => acc + cur.discount_amount, 0));
+                var details_paiements = months.map(month => details.filter(item => (new Date(item.created_at).getMonth() + 1) === month).reduce((acc, cur) => acc + cur.current_paid_amount, 0));
+
+                var totalPaye = payeData.reduce((acc, cur) => acc + cur, 0);
+                var totalDue = dueData.reduce((acc, cur) => acc + cur, 0);
+                var totalNetPaye = netPayeData.reduce((acc, cur) => acc + cur, 0);
+                var totalDiscounts = discounts.reduce((acc, cur) => acc + cur, 0);
+                var totalDetails = details_paiements.reduce((acc, cur) => acc + cur, 0);
+                console.log(totalPaye);
+
+                // Mettez à jour le graphique Chart.js
+                if (myChart) {
+                    myChart.destroy();
+                }
+                if (myChartSecond) {
+                    myChartSecond.destroy();
+                }
+
+
+                // Utilisez jQuery pour mettre à jour le contenu des div
+                $("#totalPayeDiv").text(totalNetPaye.toLocaleString('fr-FR', {
+                    style: 'currency',
+                    currency: 'XAF',
+                    minimumFractionDigits: 0,
+                }));
+                $("#totalDueDiv").text(totalDue.toLocaleString('fr-FR', {
+                    style: 'currency',
+                    currency: 'XAF',
+                    minimumFractionDigits: 0,
+                }));
+                $("#totalNetPayeDiv").text(totalDetails.toLocaleString('fr-FR', {
+                    style: 'currency',
+                    currency: 'XAF',
+                    minimumFractionDigits: 0,
+                }));
+                $("#totalDetailsPaiementsDiv").text(totalDiscounts.toLocaleString('fr-FR', {
+                    style: 'currency',
+                    currency: 'XAF',
+                    minimumFractionDigits: 0,
+                }));
+
+                myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                                label: 'Montant Net',
+                                data: netPayeData,
+                                borderColor: 'rgb(3, 74, 252)',
+                                backgroundColor: 'rgb(3, 74, 252)',
+                            },
+
+                            {
+                                label: 'details Paye',
+                                data: details_paiements,
+                                borderColor: 'rgb(65, 252, 3)',
+                                backgroundColor: 'rgb(65, 252, 3)',
+                            },
+                            {
+                                label: 'Montant due ',
+                                data: dueData,
+                                borderColor: 'rgb(252, 3, 7)',
+                                backgroundColor: 'rgb(252, 3, 7)',
+                            },
+                        ],
+                    },
+                    options: {
+
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            },
+                        },
+                    },
+                });
+                myChartSecond = new Chart(ctxSecond, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['total', 'recu', 'impayé', ],
+                        datasets: [{
+                            data: [totalNetPaye, totalDetails, totalDue],
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: [
+                                'rgb(3, 74, 252)',
+                                'rgb(65, 252, 3)',
+                                'rgb(252, 3, 7)',
+                            ],
+                            hoverOffset: 4
+                        }, ],
+                    }
+                });
+
+            });
+
+        // Écoutez les changements dans la sélection d'année
+        var yearSelect = document.getElementById('year');
+        yearSelect.addEventListener('change', function() {
+            updateChart(this.value);
+        });
+    }
+    // Chargez initialement le graphique pour l'année actuelle
+    var day = 'day'
+    updateChart(day);
+</script>
 @endsection

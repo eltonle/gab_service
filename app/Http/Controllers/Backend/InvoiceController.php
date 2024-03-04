@@ -122,7 +122,7 @@ class InvoiceController extends Controller
             }
         }
         $notification = array(
-            'message' => ' Data save succeffully',
+            'message' => ' invoice save succeffully',
             'alert-type' => 'success'
         );
         return redirect()->route('invoice.pending')->with($notification);
@@ -194,7 +194,7 @@ class InvoiceController extends Controller
         Payment::where('invoice_id', $invoice->id)->delete();
         PaymentDetail::where('invoice_id', $invoice->id)->delete();
         $notification = array(
-            'message' => ' Data delete succeffully',
+            'message' => ' invoice delete succeffully',
             'alert-type' => 'error'
         );
         return redirect()->route('invoice.pending')->with($notification);
