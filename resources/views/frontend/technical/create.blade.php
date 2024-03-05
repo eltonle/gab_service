@@ -30,7 +30,7 @@
             </div>
             <div class="card-body">
 
-                <h4 class="card-title ">Creer Client </h4><br>
+                <h4 class="card-title ">Creer Technicien </h4><br>
 
 
                 <form id="myForm" method="post" action="{{ route('technical.store') }}">
@@ -86,7 +86,7 @@
 
 
                     <!-- <input type="submit" class="btn  btn-outline-primary waves-effect waves-light" value="Enregistrer"> -->
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">submit</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Enregistrer</button>
                 </form>
 
 

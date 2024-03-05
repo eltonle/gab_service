@@ -67,7 +67,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class=" fas fa-coins"></i>
-                        <span>Categories</span>
+                        <span>Catégories</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('categories.index')}}">Listes Des Categories</a></li>
@@ -89,7 +89,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class=" fas fa-brush"></i>
-                        <span>Les Entreés & Achats</span>
+                        <span>Les Entrées & Achats</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('purchase.index')}}">Listes Des Entreés</a></li>
@@ -116,7 +116,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('technical.index')}}">Liste Techniciens</a></li>
-                        <li><a href="{{route('technical.create')}}">Creer Une Facture</a></li>
+                        <li><a href="{{route('technical.create')}}">Creer Un Technicien</a></li>
                     </ul>
                 </li>
                 <li>

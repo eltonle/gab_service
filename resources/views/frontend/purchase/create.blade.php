@@ -42,7 +42,7 @@
 
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="supplier_id"> Reference</label>
+                            <label for="supplier_id"> Reférence</label>
                             <input type="text" name="purchase_no" id="purchase_no" class="form-control ">
 
                         </div>
@@ -65,7 +65,7 @@
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="product_id">Nom du Produi</label>
+                        <label for="product_id">Nom du Produit</label>
                         <select name="product_id" id="product_id" class="form-control">
                             <option value="">Select product</option>
 
@@ -86,9 +86,9 @@
                     <table class="table-sm table-bordered border-dark" width="100%">
                         <thead>
                             <tr>
-                                <th>Category</th>
+                                <th>Catégorie</th>
                                 <th>Nom du Produit</th>
-                                <th width="7%">Pcs/Kg/cm</th>
+                                <th width="7%">Quantité</th>
                                 <th width="10%">Prix U.</th>
                                 <th>Description</th>
                                 <th width="10%">Prix Total</th>
@@ -145,13 +145,13 @@
                     <input type="number" min="1" class="form-control form-control-sm text-right buying_qty" name="buying_qty[]" value="1" id="">
                 </td>
                 <td>
-                    <input type="number" class="form-control form-control-sm text-right unit_price" name="unit_price[]" value="" >      
+                    <input type="number" class="form-control form-control-sm text-right unit_price" name="unit_price[]" value="" >
                 </td>
                 <td>
-                    <input type="text" class="form-control form-control-sm " name="description[]"  >      
+                    <input type="text" class="form-control form-control-sm " name="description[]"  >
                 </td>
                 <td>
-                    <input type="text" class="form-control form-control-sm text-right buying_price" name="buying_price[]" value="0"  readonly>      
+                    <input type="text" class="form-control form-control-sm text-right buying_price" name="buying_price[]" value="0"  readonly>
                 </td>
                 <td>
                     <i class="btn btn-danger btn-sm fa fa-window-close removeeventmore"></i>

@@ -4,22 +4,22 @@
             <!-- LOGO -->
 
             <div class="navbar-brand-box">
-                <!-- <a href="index.html" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="{{asset('assets/images/logo-sm.png')}}" alt="logo-sm" height="17">
+               <a href="index.html" class="logo logo-dark">
+                     <span class="logo-sm">
+                        <img src="{{asset('assets/images/logo-dark.png')}}" alt="logo-sm" height="17">
                     </span>
                     <span class="logo-lg">
                         <img src="{{asset('assets/images/logo-dark.png')}}" alt="logo-dark" height="15">
                     </span>
-                </a> -->
+                </a>
 
                 <a href="index.html" class="logo logo-ligh ">
-                    <!-- <span class="logo-sm">
-                        <img src="{{asset('assets/images/logo-sm.png')}}" alt="logo-sm-light" height="17">
-                    </span> -->
-                    <!-- <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-light.png')}}" alt="logo-light" height="10">
-                    </span> -->
+                    <span class="logo-sm">
+                        <img src="{{asset('assets/images/logo-light.png')}}" alt="logo-sm" height="17">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{asset('assets/images/logo-light.png')}}" alt="logo-dark" height="15">
+                    </span>
                 </a>
             </div>
 
