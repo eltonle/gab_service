@@ -26,12 +26,14 @@
             <select id="year">
                 <!-- Remplacez les années par les années disponibles dans votre base de données -->
                 <option value="day">aujourd'hui</option>
+                @if (auth()->user()->isAdmin())
                 <option value="7">7 derniers jours</option>
                 <option value="30">30 derniers jours</option>
                 <option value="lastMonth">Le mois dernier</option>
                 <option value="thisMonth">Le mois en cours</option>
                 <option value="thisYear"> Année en cours</option>
                 <option value="lastYear">Année derniere</option>
+                @endif
             </select>
         </div>
     </div>

@@ -6,12 +6,12 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Clients</h4>
+            <h4 class="mb-sm-0">Utilisateurs</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Listes </a></li>
-                    <li class="breadcrumb-item active">Client</li>
+                    <li class="breadcrumb-item active">utilisateur</li>
                 </ol>
             </div>
 
@@ -26,8 +26,8 @@
 
             <div class="card-header ">
 
-                <h3 class="card-title">Listes des Clients
-                    <a href="{{route('customers.create')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Ajouter un Client</a>
+                <h3 class="card-title">Listes des Utilisateurs
+                    <a href="{{route('users.create')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
                 </h3>
 
             </div>
@@ -56,13 +56,21 @@
                             <td>{{$item->email}}</td>
                             <td>{{$item->address}}</td>
                             <td>
-                                <a href="{{route('customers.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                <a href="{{route('users.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                 <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a> -->
 
                                 @php
-                                $count_customer = App\Models\Payment::where('customer_id', $item->id)->count();
+                                $count_customer = App\Models\Customer::where('created_by', Auth::user()->id)->count();
+                                $count_invoice = App\Models\Invoice::where('created_by', Auth::user()->id)->count();
+                                $count_product = App\Models\Product::where('created_by', Auth::user()->id)->count();
+                                $count_purchase = App\Models\Purchase::where('created_by', Auth::user()->id)->count();
+                                $count_supplier = App\Models\Supplier::where('created_by', Auth::user()->id)->count();
+                                $count_task = App\Models\Task::where('created_by', Auth::user()->id)->count();
+                                $count_tech = App\Models\Technical::where('created_by', Auth::user()->id)->count();
+                                $count_unit = App\Models\Unit::where('created_by', Auth::user()->id)->count();
+                                $count_user = App\Models\User::where('created_by', Auth::user()->id)->count();
                                 @endphp
-                                @if($count_customer < 1) <button type="button" class="btn  btn-outline-danger waves-effect waves-light btn-sm delete-btn " data-supplier-id="{{ $item->id }}">
+                                @if (empty($item->created_by) && empty($item->updated_by) && $count_customer <= 1 ) <button type="button" class="btn  btn-outline-danger waves-effect waves-light btn-sm delete-btn " data-supplier-id="{{ $item->id }}">
                                     <i class="fa fa-trash"></i>
                                     </button>
                                     @endif
@@ -106,7 +114,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Si l'utilisateur confirme, rediriger vers la route de suppression avec l'ID du fournisseur
-                        window.location.href = "/customers/delete/" + supplierId;
+                        window.location.href = "/utilisateurs/delete/" + supplierId;
                     }
                 });
             });
