@@ -30,7 +30,18 @@
                     </a>
                 </li>
 
-
+                @if (auth()->user()->isAdmin())
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="  fas fa-user-friends"></i>
+                        <span>Utilisateurs</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('users.index')}}">Listes Des Utilisateurs</a></li>
+                        <li><a href="{{route('users.create')}}">Ajouter Un Utilisateur</a></li>
+                    </ul>
+                </li>
+                @endif
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-ship-fill"></i>
@@ -164,10 +175,12 @@
                         <li><a href="{{route('customers.paid')}}">Clients Paiement</a></li>
 
                     </ul>
+                    @if (auth()->user()->isAdmin())
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('customers.wise.report')}}">Bilan Clients</a></li>
 
                     </ul>
+
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('invoice.daily.report')}}">Rapport Quotidien</a></li>
 
@@ -177,6 +190,7 @@
 
                         <li><a href="{{route('purchase.report')}}">Rapport d'Achat Quotidien</a></li>
                     </ul>
+                    @endif
                 </li>
 
 

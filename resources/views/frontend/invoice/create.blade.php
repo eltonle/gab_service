@@ -132,8 +132,8 @@
                         </div>
                         <div class="form-group col-md-9">
                             <label for="">Nom du Client</label>
-                            <select name="customer_id" id="customer_id" class="form-control">
-                                <option value="">selectionner un client</option>
+                            <select name="customer_id" id="customer_id" class="form-control" required>
+                                <option>selectionner un client</option>
                                 <option value="0">Nouveau Client</option>
                                 @foreach($customers as $customer)
                                 <option value="{{$customer->id}}">{{$customer->name}} ( {{$customer->address}} - {{$customer->phone}}) </option>
@@ -329,6 +329,7 @@
         <script>
             $(document).ready(function() {
                 $('#myForm').validate({
+
                     rules: {
                         name: {
                             required: true,

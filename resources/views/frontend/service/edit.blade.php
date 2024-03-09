@@ -35,7 +35,7 @@
                 <h4 class="card-title ">Creer Service </h4><br> -->
 
 
-                <form id="myForm" method="post" action="{{ route('service.update',$editData['0']->technical_id) }}">
+                <form id="myForm" method="post" action="{{ route('service.update',$editData[0]->facture_id) }}">
                     @csrf
                     <div class="add_item">
 
@@ -45,7 +45,7 @@
                                 <select name="technical_id" class="form-control {{ $errors->has('technical_id') ? 'is-invalid' : '' }}" id="">
                                     <option value="">Selectionner un Technicien</option>
                                     @foreach ($technicals as $tech)
-                                    <option value="{{$tech->id}}" {{($editData['0']->technical_id==$tech->id?"selected":"")}}>{{$tech->name}} ({{$tech->address}}-{{$tech->phone}})</option>
+                                    <option value="{{$tech->id}}" {{($editData[0]->technical_id==$tech->id?"selected":"")}}>{{$tech->name}} ({{$tech->address}}-{{$tech->phone}})</option>
                                     @endforeach
                                 </select>
                                 <!-- <input name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" id="name"> -->

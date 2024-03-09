@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('task_id');
             $table->double('amount');
             $table->date('date');
+            $table->integer('facture_id');
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

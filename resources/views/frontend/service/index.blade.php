@@ -52,7 +52,7 @@
                             <td>{{$item->amount}} </td> -->
                             <td>
                                 <a href="{{route('service.details', $item->technical_id)}}" class="btn btn-sm btn-success" title="details"><i class="fa fa-eye"></i></a>
-                                <a href="{{route('service.edit', $item->technical_id)}}" class="btn btn-sm btn-primary" title="edit"><i class="fa fa-edit"></i></a>
+                                <!-- <a href="{{route('service.edit', $item->technical_id)}}" class="btn btn-sm btn-primary" title="edit"><i class="fa fa-edit"></i></a> -->
                                 <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a> -->
                                 @php
                                 $count_task = App\Models\Technical_Task_Amount::where('task_id', $item->id)->count();
@@ -60,7 +60,7 @@
                                 <!-- @if($count_task < 1) <button type="button" class="btn  btn-outline-danger waves-effect waves-light btn-sm delete-btn " data-supplier-id="{{ $item->id }}">
                                     <i class="fa fa-trash"></i>
                                     </button> -->
-                                @endif
+                                <!-- @endif -->
                             </td>
                         <tr>
                             @endforeach

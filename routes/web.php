@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\TaskController;
 use App\Http\Controllers\Backend\TechnicalController;
 use App\Http\Controllers\Backend\UnitController;
+use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/password', 'updatePassword')->name('update.password');
     });
 
+    // fournisseurs
     Route::prefix('supplier')->controller(SupplierController::class)->group(function () {
         Route::get('/view', 'index')->name('suppliers.index');
         Route::get('/create', 'create')->name('suppliers.create');
@@ -80,9 +82,15 @@ Route::middleware('auth')->group(function () {
         Route::post('/payment', 'payment')->name('customers.payment.invoice');
     });
 
-
-
-
+    // utilisateurs
+    Route::prefix('utilisateurs')->controller(UserController::class)->group(function () {
+        Route::get('/view', 'index')->name('users.index');
+        Route::get('/create', 'create')->name('users.create');
+        Route::post('/store', 'store')->name('users.store');
+        Route::get('/edit/{id}', 'edit')->name('users.edit');
+        Route::post('/update/{id}', 'update')->name('users.update');
+        Route::get('/delete/{id}', 'delete')->name('users.delete');
+    });
 
     // units
     Route::prefix('units')->controller(UnitController::class)->group(function () {
@@ -172,9 +180,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/view', 'index')->name('service.index');
         Route::get('/create', 'create')->name('service.create');
         Route::post('/store', 'store')->name('service.store');
-        Route::get('/edit/{technical_id}', 'edit')->name('service.edit');
-        Route::post('/update/{technical_id}', 'update')->name('service.update');
+        Route::get('/edit/{facture_id}', 'edit')->name('service.edit');
+        Route::post('/update/{facture_id}', 'update')->name('service.update');
         Route::get('/details/{technical_id}', 'details')->name('service.details');
+
+        Route::get('/details_facture/{facture_id}', 'detailsFacturePrint')->name('service.facture');
 
 
         Route::get('/delete/{id}', 'delete')->name('service.delete');

@@ -21,8 +21,28 @@ class User extends Authenticatable
         'name',
         'username',
         'email',
+        'user_type',
         'password',
     ];
+
+
+
+    const ADMIN_TYPE = 'admin';
+    const USER_TYPE = 'user';
+
+    public function isAdmin()
+    {
+        return $this->user_type === self::ADMIN_TYPE;
+    }
+
+    public function isUser()
+    {
+        return $this->user_type === self::USER_TYPE;
+    }
+
+
+
+
 
     /**
      * The attributes that should be hidden for serialization.
