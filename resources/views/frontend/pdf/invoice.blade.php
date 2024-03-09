@@ -20,13 +20,15 @@
                 <table width="100%">
                     <tbody>
                         <tr>
-                            <td><strong>Factures No#{{ $invoice->invoice_no }}</strong></td>
+                            <td><img src="assets/images/logo-sm-dark.png" heigth="200" width="250">
+
                             <td>
-                                <span style="font-size: 20px;background: #ddd;">Gabson Services App </span>
+                                 <span style="font-size: 20px;background: #ddd;">Gabson Services </span>
+                                 <p>Adresse : Port-Gentil-Gabon<br> (Balaran Centre social)</p>
+                                 <span>Service_mobile : <strong>074 90 77 96<br>074 29 64 71 - 062 67 52 24</strong></span>
                             </td>
+                            <td><strong>Facture No#{{ $invoice->invoice_no }}</strong></td>
                             <td>
-                                <span> Showroom No : 001<br /> Service_mobile : <strong>+237 690909090</strong></span>
-                            </td>
                         </tr>
 
                     </tbody>
@@ -136,7 +138,7 @@
                     <tbody>
                         <tr>
                             <td style="width:40%;">
-                                <p style="text-align: center;margin-left: 20px;">Douala: bp cite</p>
+                                <p style="text-align: center;margin-left: 20px;">Port-Gentil - Balaran (Centre Social) </p>
                             </td>
                             <td style="width:20%;"></td>
                             <td style="width:40%;text-align: center;">

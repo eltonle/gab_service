@@ -19,11 +19,8 @@
             <div class="col-md-6">
                 <table width="100%">
                     <tr>
-                        <td width="50%">
-                            <h4 class="" style="font-size: 26px;background: #ddd;">
-                                <i class="fas fa-globe text-indigo"></i> Gabson Services.
-                            </h4>
-                        </td>
+                       <td><img src="assets/images/logo-sm-dark.png" heigth="200" width="250">
+                        <td>
                         <td width="50%">
                             {{ $date
                                     }}
