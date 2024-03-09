@@ -6,11 +6,11 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Clients</h4>
+            <h4 class="mb-sm-0">Techniciens</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Client</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Technicien</a></li>
                     <li class="breadcrumb-item active">Update</li>
                 </ol>
             </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="card-body">
 
-                <h4 class="card-title ">Update Client </h4><br>
+                <h4 class="card-title ">Update Technicien </h4><br>
 
 
                 <form id="myForm" method="post" action="{{ route('technical.update',$item->id) }}">

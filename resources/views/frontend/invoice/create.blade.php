@@ -83,9 +83,9 @@
                     <table class="table-sm table-bordered border-dark" width="100%">
                         <thead>
                             <tr>
-                                <th>Category</th>
+                                <th>Catégorie</th>
                                 <th>Nom du Produit</th>
-                                <th width="7%">Pcs/Kg/cm</th>
+                                <th width="7%">Quantité</th>
                                 <th width="10%">Prix U.</th>
                                 <th width="17%">Prix Total</th>
                                 <th width="10%">Action</th>
@@ -120,12 +120,12 @@
                     <br>
                     <div class="row">
                         <div class="form-group col-md-3">
-                            <label>Paid Status</label>
+                            <label>Status de Payement</label>
                             <select name="paid_status" id="paid_status" class="form-control">
                                 <option value="">selectionner un status</option>
-                                <option value="full_paid">Full Paid</option>
-                                <option value="full_due">Full Due</option>
-                                <option value="partial_paid">Partial Paid</option>
+                                <option value="full_paid">Payé</option>
+                                <option value="full_due">En Attente</option>
+                                <option value="partial_paid">Partiellement Payé</option>
                             </select>
 
                             <input type="text" name="paid_amount" class="form-control mt-2 paid_amount" placeholder="entrer une somme" style="display: none;">
@@ -191,11 +191,11 @@
                     <input type="number" min="1" class="form-control form-control-sm text-right selling_qty" name="selling_qty[]" value="1" id="">
                 </td>
                 <td>
-                    <input type="number" class="form-control form-control-sm text-right unit_price" name="unit_price[]" value="" >      
+                    <input type="number" class="form-control form-control-sm text-right unit_price" name="unit_price[]" value="" >
                 </td>
-                
+
                 <td>
-                    <input type="text" class="form-control form-control-sm text-right selling_price" name="selling_price[]" value="0"  readonly>      
+                    <input type="text" class="form-control form-control-sm text-right selling_price" name="selling_price[]" value="0"  readonly>
                 </td>
                 <td>
                     <i class="btn btn-danger btn-sm fa fa-window-close removeeventmore"></i>

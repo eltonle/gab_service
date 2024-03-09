@@ -31,7 +31,7 @@
 
             </div>
             <div class="card-body">
-                <!-- 
+                <!--
                 <h4 class="card-title ">Creer Service </h4><br> -->
 
 
@@ -82,7 +82,7 @@
                         <!-- end row -->
 
                     </div>
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">submit</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Enregistrer</button>
                 </form>
 
 
