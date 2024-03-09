@@ -18,14 +18,16 @@
         <div class="row">
             <div class="col-md-12">
                 <table width="100%">
-                    <tbody>
+                   <tbody>
                         <tr>
+                            <td><img src="assets/images/logo-sm-dark.png" heigth="200" width="250">
+
                             <td>
-                                <span style="font-size: 20px;background: #ddd;">Gescom App Mall</span>
+                                 <span style="font-size: 20px;background: #ddd;">Gabson Services </span>
+                                 <p>Adresse : Port-Gentil-Gabon<br> (Balaran Centre social)</p>
+                                 <span>Service_mobile : <strong>074 90 77 96<br>074 29 64 71 - 062 67 52 24</strong></span>
                             </td>
-                            <td>
-                                <span> Showroom No : 001<br /> Service_mobile : <strong>+237 690909090</strong></span>
-                            </td>
+
                         </tr>
 
                     </tbody>
