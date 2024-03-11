@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Services</h4>
+            <h4 class="mb-sm-0">SERVICES</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -25,7 +25,7 @@
             <div class="card-header ">
 
                 <h3 class="card-title">
-                    Creer Service
+                    Créer Service
                     <a href="{{route('service.index')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-list"></i> Listes des Services</a>
                 </h3>
 

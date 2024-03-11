@@ -6,7 +6,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Facturation</h4>
+            <h4 class="mb-sm-0">FACTURATION</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -66,12 +66,12 @@
                         <thead>
                             <tr class="text-center">
                                 <th>NI</th>
-                                <th>Categorie</th>
+                                <th>Catégorie</th>
                                 <th>Articles</th>
                                 <th class="text-center" style="background: #ddd;padding: 1px;">
                                     Stock Courant
                                 </th>
-                                <th>Quantite</th>
+                                <th>Quantité</th>
                                 <th>Price Unitaire </th>
                                 <th> Prix Total</th>
                             </tr>
@@ -114,11 +114,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="text-right">Montant paye</td>
+                                <td colspan="6" class="text-right">Montant payé</td>
                                 <td class="text-center"><strong>{{ number_format($payment->paid_amount, 0, '.', ' ') }} FCFA</strong></td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="text-right">Montant Du</td>
+                                <td colspan="6" class="text-right">Montant Dû</td>
                                 <td class="text-center "><strong style="color: red;">{{ number_format($payment->due_amount, 0, '.', ' ')}} FCFA</strong></td>
                             </tr>
                             <tr>

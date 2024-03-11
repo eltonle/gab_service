@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Facturation</h4>
+            <h4 class="mb-sm-0">FACTURATION</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -25,7 +25,7 @@
             <div class="card-header ">
 
                 <h3 class="card-title">
-                    Creer une Facture
+                    Créer une Facture
                     <a href="{{route('invoice.index')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-list"></i> Listes des Factures</a>
                 </h3>
             </div>
@@ -50,7 +50,7 @@
                         <div class="form-group col-md-3">
                             <label for="category_id">Categorie</label>
                             <select name="category_id" id="category_id" class="form-control">
-                                <option value="">Select categorie</option>
+                                <option value="">Select catégorie</option>
                                 @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach

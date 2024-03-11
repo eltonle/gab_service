@@ -6,12 +6,12 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Taches</h4>
+            <h4 class="mb-sm-0">TACHES</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Listes </a></li>
-                    <li class="breadcrumb-item active">taches</li>
+                    <li class="breadcrumb-item active">tâches</li>
                 </ol>
             </div>
 
@@ -26,7 +26,7 @@
 
             <div class="card-header ">
 
-                <h3 class="card-title">Listes des Taches
+                <h3 class="card-title">Listes des Tâches
                     <a href="{{route('task.create')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Ajouter une tache</a>
                 </h3>
 

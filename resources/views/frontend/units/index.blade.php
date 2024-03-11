@@ -6,7 +6,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Unites</h4>
+            <h4 class="mb-sm-0">UNITES</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -39,7 +39,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Nom</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

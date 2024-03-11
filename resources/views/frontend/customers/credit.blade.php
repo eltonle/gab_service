@@ -11,7 +11,7 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Listes </a></li>
-                    <li class="breadcrumb-item active">Credits Client</li>
+                    <li class="breadcrumb-item active">Crédits Client</li>
                 </ol>
             </div>
 
@@ -26,7 +26,7 @@
 
             <div class="card-header ">
 
-                <h3 class="card-title">Listes des Credits
+                <h3 class="card-title">Listes des Crédits
                     <a href="{{route('customers.credit.pdf')}}" target="_blank" class="float-right btn btn-success btn-sm"><i class="fa fa-download"></i> Telecharger</a>
                 </h3>
 

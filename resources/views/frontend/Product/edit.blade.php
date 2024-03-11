@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Produits</h4>
+            <h4 class="mb-sm-0">PRODUITS</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -32,7 +32,7 @@
             </div>
             <div class="card-body">
 
-                <h4 class="card-title ">Update Produit </h4><br>
+                <h4 class="card-title ">Editer Produit </h4><br>
 
 
                 <form id="myForm" method="post" action="{{ route('products.update',$editData->id) }}">
@@ -52,7 +52,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <label class="col-sm-2 col-form-label">Categorie</label>
+                        <label class="col-sm-2 col-form-label">Catégorie</label>
                         <div class="col-sm-4">
                             <select class="form-control select2 " name="category_id">
                                 <option value="">Select</option>
@@ -98,7 +98,7 @@
                     <!-- end row -->
 
                     <!-- <input type="submit" class="btn  btn-outline-primary waves-effect waves-light" value="Enregistrer"> -->
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Enregistrer</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Mettre à jour</button>
                 </form>
 
 

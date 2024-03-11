@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Techniciens</h4>
+            <h4 class="mb-sm-0">TECHNICIENS</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -30,7 +30,7 @@
             </div>
             <div class="card-body">
 
-                <h4 class="card-title ">Creer Technicien </h4><br>
+                <h4 class="card-title ">Créer Technicien </h4><br>
 
 
                 <form id="myForm" method="post" action="{{ route('technical.store') }}">
@@ -62,7 +62,7 @@
 
 
                     <div class="row mb-3">
-                        <label for="address" class="col-sm-2 col-form-label">Addresse</label>
+                        <label for="address" class="col-sm-2 col-form-label">Adresse</label>
                         <div class="col-sm-10">
                             <input name="address" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" id="address">
                             @error('address')
@@ -72,7 +72,7 @@
                     </div>
                     <!-- end row -->
                     <div class="row mb-3">
-                        <label for="phone" class="col-sm-2 col-form-label">Telephone</label>
+                        <label for="phone" class="col-sm-2 col-form-label">Téléphone</label>
                         <div class="col-sm-10">
                             <input name="phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" id="phone">
                             @error('phone')

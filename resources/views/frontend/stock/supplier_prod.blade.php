@@ -6,7 +6,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Fournisseurs/Produits</h4>
+            <h4 class="mb-sm-0">FOURNISSEURS / PRODUITS</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -26,7 +26,7 @@
 
             <div class="card-header ">
 
-                <h3 class="card-title">Selectionner critere
+                <h3 class="card-title">Selectionner critère
                     <!-- <a href="{{route('stock.report.pdf')}}" target="_blank" class="float-right btn btn-success btn-sm"><i class="fa fa-download"></i> Telecharger fichier</a> -->
                 </h3>
 
@@ -37,7 +37,7 @@
                     <div class="col-md-12 text-center">
                         <strong>Rapport Fournisseur</strong>
                         <input type="radio" name="supplier_product_wise" value="supplier_wise" class="search_value"> &nbsp;&nbsp;
-                        <strong>Rapport Product</strong>
+                        <strong>Rapport Produit</strong>
                         <input type="radio" name="supplier_product_wise" value="product_wise" class="search_value">
                     </div>
                 </div>
@@ -65,9 +65,9 @@
                     <form method="GET" action="{{route('stock.report.product.pdf')}}" target="_blank">
                         <div class="row">
                             <div class="form-group col-sm-4">
-                                <label for="category_id">Categorie</label>
+                                <label for="category_id">Catégorie</label>
                                 <select name="category_id" id="category_id" class="form-control">
-                                    <option value="">Select categorie</option>
+                                    <option value="">Select catégorie</option>
                                     @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
@@ -77,12 +77,12 @@
                             <div class="form-group col-sm-6">
                                 <label for="product_id">Nom du Produit</label>
                                 <select name="product_id" id="product_id" class="form-control">
-                                    <option value="">Select product</option>
+                                    <option value="">Select produit</option>
 
                                 </select>
                             </div>
                             <div class="col-sm-2" style="padding-top: 30px;">
-                                <button class="btn btn-primary ">Search</button>
+                                <button class="btn btn-primary ">Rechercher</button>
                             </div>
                         </div>
                     </form>

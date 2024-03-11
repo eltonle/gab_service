@@ -78,7 +78,7 @@
             <div class="card-body">
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <p class="text-truncate font-size-14 mb-2">Total somme credit</p>
+                        <p class="text-truncate font-size-14 mb-2">Total somme crédit</p>
                         <h4 class="mb-2" id="totalDueDiv"></h4>
                     </div>
                     <div class="avatar-sm">

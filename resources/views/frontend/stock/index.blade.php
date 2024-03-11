@@ -6,7 +6,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Produits</h4>
+            <h4 class="mb-sm-0">PRODUITS</h4>
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Listes </a></li>
@@ -35,7 +35,7 @@
                             <th>Fournisseurs</th>
                             <th>Categories</th>
                             <th>Produits</th>
-                            <th>Stock d'entreé</th>
+                            <th>Stock d'entrée</th>
                             <th>Stock Sortie</th>
                             <th>Stocks</th>
                             <th>Unités</th>

@@ -58,16 +58,16 @@
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="category_id">Category </label>
+                        <label for="category_id">Catégorie </label>
                         <select name="category_id" id="category_id" class="form-control">
-                            <option value="">Select category</option>
+                            <option value="">Select catégorie</option>
 
                         </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="product_id">Nom du Produit</label>
                         <select name="product_id" id="product_id" class="form-control">
-                            <option value="">Select product</option>
+                            <option value="">Select produit</option>
 
                         </select>
                     </div>

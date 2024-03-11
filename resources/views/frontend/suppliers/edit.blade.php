@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Fournisseurs</h4>
+            <h4 class="mb-sm-0">FOURNISSEURS</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -64,7 +64,7 @@
 
 
                     <div class="row mb-3">
-                        <label for="supplier_address" class="col-sm-2 col-form-label">Addresse</label>
+                        <label for="supplier_address" class="col-sm-2 col-form-label">Adresse</label>
                         <div class="col-sm-10">
                             <input name="supplier_address" class="form-control {{ $errors->has('supplier_address') ? 'is-invalid' : '' }}" value="{{$item->supplier_address}}" type="text" id="supplier_address">
                             @error('supplier_address')
@@ -74,7 +74,7 @@
                     </div>
                     <!-- end row -->
                     <div class="row mb-3">
-                        <label for="supplier_phone" class="col-sm-2 col-form-label">Telephone</label>
+                        <label for="supplier_phone" class="col-sm-2 col-form-label">Téléphone</label>
                         <div class="col-sm-10">
                             <input name="supplier_phone" class="form-control {{ $errors->has('supplier_phone') ? 'is-invalid' : '' }}" value="{{$item->supplier_phone}}" type="text" id="supplier_phone">
                             @error('supplier_phone')
@@ -88,7 +88,7 @@
 
 
                     <!-- <input type="submit" class="btn  btn-outline-primary waves-effect waves-light" value="Enregistrer"> -->
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Enregistrer</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Mettre à jour</button>
                 </form>
 
 

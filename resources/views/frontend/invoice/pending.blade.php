@@ -6,7 +6,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Facturation</h4>
+            <h4 class="mb-sm-0">FACTURATION</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -42,7 +42,7 @@
                         <thead>
                             <tr>
 
-                                <th> facture No#</th>
+                                <th> Facture No#</th>
                                 <th>Nom Client</th>
                                 <th>Date</th>
                                 <th>Montant Facture</th>
@@ -72,7 +72,7 @@
                                     @if($item->status == '0')
                                     <span class="badge bg-danger">en attente</span>
                                     @elseif($item->status == '1')
-                                    <span class="badge bg-success">approuveé</span>
+                                    <span class="badge bg-success">approuvée</span>
                                     @endif
                                 </td>
                                 <td>

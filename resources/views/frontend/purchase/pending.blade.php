@@ -6,7 +6,7 @@
 <div class="row mb-3">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Achats & Entreé</h4>
+            <h4 class="mb-sm-0">ACHATS & ENTREES</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -26,7 +26,7 @@
 
             <div class="card-header ">
 
-                <h3 class="card-title">Listes des Achats en attentes
+                <h3 class="card-title">Listes des Achats en attente
                     <!-- <a href="{{route('purchase.create')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Ajouter un Achat</a> -->
                 </h3>
 
@@ -45,7 +45,7 @@
                                 <th>No_achat</th>
                                 <th>Date</th>
                                 <th>Fournisseur</th>
-                                <th>Category</th>
+                                <th>Catégorie</th>
                                 <th>Nom Produit</th>
                                 <th>Description</th>
                                 <th>Quantité</th>

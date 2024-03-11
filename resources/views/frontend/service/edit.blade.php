@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Services</h4>
+            <h4 class="mb-sm-0">SERVICES</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -31,7 +31,7 @@
 
             </div>
             <div class="card-body">
-                <!-- 
+                <!--
                 <h4 class="card-title ">Creer Service </h4><br> -->
 
 
@@ -93,7 +93,7 @@
                         <!-- end row -->
 
                     </div>
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">mettre a jour</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">mettre à jour</button>
                 </form>
 
 
