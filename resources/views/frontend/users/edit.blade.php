@@ -25,14 +25,14 @@
             <div class="card-header ">
 
                 <h3 class="card-title">
-                    <a href="{{route('users.index')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-list"></i> Listes des Clients</a>
+                    <a href="{{route('users.index')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-list"></i> Listes des Utilisateurs</a>
                 </h3>
 
                 <!-- <div class="float-right"> <a href="{{route('suppliers.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Ajouter un Achat</a></div> -->
             </div>
             <div class="card-body">
 
-                <h4 class="card-title ">Update Client </h4><br>
+                <h4 class="card-title ">Update User </h4><br>
 
 
                 <form id="myForm" method="post" action="{{ route('users.update',$item->id) }}">

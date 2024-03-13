@@ -19,16 +19,19 @@
             <div class="col-md-6">
                 <table width="100%">
                     <tr>
-                        <td width="50%">
-                            <h4 class="" style="font-size: 26px;background: #ddd;">
-                                <i class="fas fa-globe text-indigo"></i> Gabson Services.
-                            </h4>
+                        <td width="20%"><img src="assets/images/logo-sm-dark.png" heigth="200" width="250">
+
+                        <td width="35%">
+                            <span style="font-size: 20px;background: #ddd;">Gabson Services </span>
+                            <p>Adresse : Port-Gentil-Gabon<br> (Balaran Centre social)</p>
+                            <span>Service_mobile : <strong>074 90 77 96<br>074 29 64 71 - 062 67 52 24</strong></span>
                         </td>
-                        <td width="50%">
-                            {{ $allData->date
-                                    }}
-                        </td>
+                        <td width="45%"><strong>Facture № #{{$allData->facture_id}}</strong> <br> <span> Date : {{ date('d-M-Y',strtotime( $allData->date))
+                                    }}</span></td>
+                        <td>
                     </tr>
+
+
                 </table>
             </div>
         </div>
@@ -37,8 +40,10 @@
             <table>
                 <tbody>
                     <tr>
-                        <td width="43%"></td>
-                        <td width=""><strong>Facture Tache Effectue </strong></td>
+                        <td width="47%">
+
+                        </td>
+                        <td width=""><strong>Facture Tache Effectuée </strong></td>
                         <td width="15%"></td>
 
                     </tr>
@@ -48,10 +53,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div style="margin-bottom: 7px;margin-top: 7px;">
 
-                    <strong>Facture № #: </strong>{{$allData->facture_id}}
-                </div>
 
                 <table id="exemple1" border="1" width="100%" cellspacing="0">
                     <thead>

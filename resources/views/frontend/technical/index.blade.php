@@ -39,10 +39,10 @@
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Nom</th>
                             <th>Email</th>
                             <th>Mobile_no</th>
-                            <th>Address</th>
+                            <th>Addresse</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

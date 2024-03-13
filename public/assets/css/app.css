@@ -3902,14 +3902,20 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
   text-align: center;
   width: 30px;
 }
-
+  
+.auth-body-bgg {
+  background-image: url(../images/mockup2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 .auth-body-bg {
   background-image: url(../images/auth-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.auth-body-bg .bg-overlay {
+.auth-body-bg .auth-body-bgg .bg-overlay {
   background: rgba(51, 51, 51, 0.97);
   width: 100%;
   height: 100%;

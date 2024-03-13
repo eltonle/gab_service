@@ -98,7 +98,7 @@
                     <!-- end row -->
 
                     <!-- <input type="submit" class="btn  btn-outline-primary waves-effect waves-light" value="Enregistrer"> -->
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Enregistrer</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Submit</button>
                 </form>
 
 
