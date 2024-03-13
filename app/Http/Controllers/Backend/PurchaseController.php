@@ -103,7 +103,7 @@ class PurchaseController extends Controller
             'message' => ' Data Approved succeffully',
             'alert-type' => 'success'
         );
-        return redirect()->route('purchase.pending')->with($notification);
+        return redirect()->route('purchase.index')->with($notification);
     } //END METHOD
 
     public function delete($id)

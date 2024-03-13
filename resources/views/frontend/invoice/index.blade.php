@@ -48,6 +48,7 @@
                                 <th>Date</th>
                                 <th>Montant Facture</th>
                                 <th>Status</th>
+                                <th>Paiement </th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -74,6 +75,18 @@
                                     <span class="badge bg-danger">en attente</span>
                                     @elseif($item->status == '1')
                                     <span class="badge bg-success">approuvée</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item['payment']['paid_status'] == 'partial_paid')
+                                    <span class="badge" style="background: #43BD00;color:white; padding: 3px;">
+                                        <i class="fa fa-burn"></i> Partiellement</span>
+                                    @elseif ($item['payment']['paid_status'] == 'full_due')
+                                    <span class="badge" style="background:  #B61418; color:white; padding: 3px;">
+                                        <i class="fas fa-thumbs-down "></i> Non Payer</span>
+                                    @elseif ($item['payment']['paid_status']=='full_paid')
+                                    <span class="badge" style="background: #36BEA6; color:white; padding: 3px;">
+                                        <i class="fas fa-thumbs-up"></i> Payer</span>
                                     @endif
                                 </td>
                                 <td>

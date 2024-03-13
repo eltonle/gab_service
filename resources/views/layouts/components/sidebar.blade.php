@@ -24,8 +24,15 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
+                    <a href="{{route('home')}}" class="waves-effect">
+                        <i class="ri-home-8-fill"></i>
+                        <span>Accueil</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{route('dashboard')}}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
+                        <i class="ri-dashboard-line"></i>
                         <span>Tableau de Bord</span>
                     </a>
                 </li>
@@ -104,7 +111,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('purchase.index')}}">Listes Des Entreés</a></li>
-                        <li><a href="{{route('purchase.pending')}}">Les Entreés en attentes</a></li>
+                        <!-- <li><a href="{{route('purchase.pending')}}">Les Entreés en attentes</a></li> -->
                         <li><a href="{{route('purchase.create')}}">Ajouter Une Entreé</a></li>
                     </ul>
                 </li>

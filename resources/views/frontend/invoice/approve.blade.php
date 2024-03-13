@@ -36,7 +36,7 @@
                 @php
                 $payment = App\Models\Payment::where('invoice_id',$invoice->id)->first();
                 @endphp
-                <table width="100%">
+                <table width="100%" class="mb-3">
                     <tbody>
                         <tr>
                             <td width="15%">
@@ -46,20 +46,16 @@
                                 <p><strong>Name :</strong> {{ $payment['customer']['name'] }}</p>
                             </td>
                             <td width="25%">
-                                <p><strong>Mobile No :</strong>{{ $payment['customer']['mobile_no'] }}</p>
+                                <p><strong>Mobile No :</strong>{{ $payment['customer']['phone'] }}</p>
                             </td>
                             <td width="35%">
                                 <p><strong>Address :</strong>{{ $payment['customer']['address'] }}</p>
                             </td>
                         </tr>
-                        <tr>
-                            <td width="15%"></td>
-                            <td width="85%" colspan="3">
-                                <p><strong>Description : </strong>{{ $invoice->description }}</p>
-                            </td>
-                        </tr>
+
                     </tbody>
                 </table>
+                <hr>
                 <form method="post" action="{{ route('invoice.approve.store',$invoice->id) }}">
                     @csrf
                     <table border="1" width="100%" class="table-bordered">

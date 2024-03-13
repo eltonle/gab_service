@@ -41,16 +41,16 @@
                     <table id="datatable" class="table table-bordered dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
-                                <th>SL.</th>
+                                <!-- <th>SL.</th> -->
                                 <th>No_achat</th>
                                 <th>Date</th>
                                 <th>Fournisseur</th>
                                 <th>Catégorie</th>
                                 <th>Nom Produit</th>
-                                <th>Description</th>
+                                <!-- <th>Description</th> -->
                                 <th>Quantité</th>
                                 <th>Prix U.</th>
-                                <th>Prix achat</th>
+                                <th>Montant </th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -60,13 +60,13 @@
                         <tbody>
                             @foreach($allData as $key => $item)
                             <tr>
-                                <td>{{ $key + 1}}</td>
+                                <!-- <td>{{ $key + 1}}</td> -->
                                 <td>{{$item->purchase_no}}</td>
-                                <td>{{date('d-m-Y',strtotime($item->date))}}</td>
+                                <td>{{date('d-M-Y',strtotime($item->date))}}</td>
                                 <td>{{$item['supplier']['supplier_name']}}</td>
                                 <td>{{$item['category']['name']}}</td>
                                 <td>{{$item['product']['name']}}</td>
-                                <td>{{$item->description}}</td>
+                                <!-- <td>{{$item->description}}</td> -->
                                 <td>
                                     {{number_format($item->buying_qty, 0, ',', ' ')}}
                                     {{$item['product']['unit']['name']}}
@@ -86,8 +86,14 @@
                                     @endif
                                 </td>
                                 <td>
-
+                                    @if($item->status == '1')
+                                    <span class="badge bg-info">no action</span>
+                                    @endif
                                     @if($item->status=='0')
+
+                                    <button type="button" title="approuver" class="btn  btn-outline-success waves-effect waves-light btn-sm delete-btn1 " data-supplier-id="{{ $item->id }}">
+                                        <i class="fa fa-check-circle"></i>
+                                    </button>
                                     <button type="button" title="supprimer" class="btn  btn-outline-danger waves-effect waves-light btn-sm delete-btn " data-supplier-id="{{ $item->id }}">
                                         <i class="fa fa-trash"></i>
                                     </button>
@@ -119,6 +125,37 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Sélectionnez tous les boutons avec la classe delete-btn
+        var deleteButtons = document.querySelectorAll('.delete-btn1');
+
+        // Attachez le gestionnaire d'événements à chaque bouton
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var supplierId = button.getAttribute('data-supplier-id');
+
+                // Afficher la boîte de dialogue SweetAlert2 pour confirmation de la suppression
+                Swal.fire({
+                    title: "Approuvé l'achat?",
+                    text: "Vous ne pourrez pas revenir en arrière!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Oui, approuvez-le !'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Si l'utilisateur confirme, rediriger vers la route de suppression avec l'ID du fournisseur
+                        window.location.href = "/achats/approve/" + supplierId;
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sélectionnez tous les boutons avec la classe delete-btn
         var deleteButtons = document.querySelectorAll('.delete-btn');
 
         // Attachez le gestionnaire d'événements à chaque bouton
@@ -128,13 +165,13 @@
 
                 // Afficher la boîte de dialogue SweetAlert2 pour confirmation de la suppression
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Etes vous sure?',
+                    text: "Vous ne pourrez pas revenir en arrière!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
                     cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Oui, supprime le!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Si l'utilisateur confirme, rediriger vers la route de suppression avec l'ID du fournisseur

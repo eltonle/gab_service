@@ -47,7 +47,7 @@
                                 <th>Fournisseur</th>
                                 <th>Catégorie</th>
                                 <th>Nom Produit</th>
-                                <th>Description</th>
+                                <!-- <th>Description</th> -->
                                 <th>Quantité</th>
                                 <th>Prix U.</th>
                                 <th>Prix achat</th>
@@ -66,7 +66,7 @@
                                 <td>{{$item['supplier']['supplier_name']}}</td>
                                 <td>{{$item['category']['name']}}</td>
                                 <td>{{$item['product']['name']}}</td>
-                                <td>{{$item->description}}</td>
+                                <!-- <td>{{$item->description}}</td> -->
                                 <td>
                                     {{number_format($item->buying_qty, 0, ',', ' ')}}
                                     {{$item['product']['unit']['name']}}

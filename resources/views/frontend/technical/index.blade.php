@@ -40,6 +40,7 @@
                     <thead>
                         <tr>
                             <th>Nom</th>
+                            <th>Nom</th>
                             <th>Email</th>
                             <th>Mobile_no</th>
                             <th>AdressE</th>

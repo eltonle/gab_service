@@ -88,7 +88,7 @@
 
 
                     <!-- <input type="submit" class="btn  btn-outline-primary waves-effect waves-light" value="Enregistrer"> -->
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Enregister</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Submit</button>
                 </form>
 
 

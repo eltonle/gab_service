@@ -51,7 +51,7 @@
 
 
                     <!-- <input type="submit" class="btn  btn-outline-primary waves-effect waves-light" value="Enregistrer"> -->
-                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Mettre à jour</button>
+                    <button type="submit" class="btn  btn-outline-primary waves-effect waves-light">Submit</button>
                 </form>
 
 

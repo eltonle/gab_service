@@ -50,7 +50,7 @@
                     <!-- end row -->
 
                     <div class="row mb-3">
-                        <label for="" class="col-sm-2 col-form-label">Nom utilisateur</label>
+                        <label for="" class="col-sm-2 col-form-label">UserName</label>
                         <div class="col-sm-10">
                             <input name="username" class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" placeholder="Nom utilisateur" type="text" id="">
                             @error('username')

@@ -20,14 +20,14 @@
                 <table width="100%">
                     <tbody>
                         <tr>
-                            <td><img src="assets/images/logo-sm-dark.png" heigth="200" width="250">
+                            <td width="20%"><img src="assets/images/logo-sm-dark.png" heigth="200" width="250">
 
-                            <td>
-                                 <span style="font-size: 20px;background: #ddd;">Gabson Services </span>
-                                 <p>Adresse : Port-Gentil-Gabon<br> (Balaran Centre social)</p>
-                                 <span>Service_mobile : <strong>074 90 77 96<br>074 29 64 71 - 062 67 52 24</strong></span>
+                            <td width="35%">
+                                <span style="font-size: 20px;background: #ddd;">Gabson Services </span>
+                                <p>Adresse : Port-Gentil-Gabon<br> (Balaran Centre social)</p>
+                                <span>Service_mobile : <strong>074 90 77 96<br>074 29 64 71 - 062 67 52 24</strong></span>
                             </td>
-                            <td><strong>Facture No#{{ $invoice->invoice_no }}</strong></td>
+                            <td width="45%"><strong>Facture №#{{ $invoice->invoice_no }}</strong></td>
                             <td>
                         </tr>
 

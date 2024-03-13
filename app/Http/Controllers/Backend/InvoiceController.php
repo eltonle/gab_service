@@ -44,7 +44,7 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        if ($request->category_id == null) {
+        if ($request->category_id == null || $request->category_id == null) {
 
             $notification = array(
                 'message' => ' Sorry! you do not select any item',
@@ -138,7 +138,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::with(['invoice_details'])->find($id);
 
-        return view('frontend.invoice.approve', compact('invoice'));
+        return view('frontend.invoice.index', compact('invoice'));
     } //END METHOD
 
     public function approveStore(Request $request, $id)
