@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Models\Service;
+use App\Models\ServiceDetail;
+use App\Models\ServicePayment;
+use App\Models\ServicePaymentDetail;
 use App\Models\Task;
 use App\Models\Technical;
-use App\Models\Technical_Task_Amount;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,159 +19,201 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $allData = Technical_Task_Amount::select('technical_id')->groupBy('technical_id')->orderBy('technical_id', 'asc')->get();
-        return view('frontend.service.index', compact('allData'));
+        $allData = Service::orderBy('date', 'desc')->where('status', '1')->orderBy('id', 'desc')->get();
+        // dd($allData);
+        return view('frontend.services.index', compact('allData'));
     } //END METHOD
 
     public function create()
     {
-        $data['technicals'] = Technical::all();
-        $data['tasks'] = Task::all();
-        return view('frontend.service.create', $data);
+        $data['techniciens'] = Technical::all();
+        $data['taches'] = Task::all();
+        $invoice_data = Service::orderBy('id', 'desc')->first();
+        if ($invoice_data == null) {
+            $firstReg = '0';
+            $data['invoice_no'] = $firstReg + 1;
+        } else {
+            $invoice_data = Service::orderBy('id', 'desc')->first()->invoice_no;
+            $data['invoice_no'] = $invoice_data + 1;
+        }
+        $data['customers'] = Customer::all();
+        $data['date'] = date('Y-m-d');
+        return view('frontend.services.create', $data);
     } //END METHOD
 
 
     public function store(Request $request)
     {
-        $request->validate([
-            'technical_id' => 'required',
-            'task_id' => 'required',
-            'amount' => 'required',
-        ]);
-        // Obtenir la prochaine valeur de facture_id
-        $maxFactureId = Technical_Task_Amount::max('facture_id');
+        // dd($request->all());
+        if ($request->technical_id == null || $request->customer_id == null) {
 
-        // Déterminer la valeur suivante
-        $nextFactureId = ($maxFactureId !== null) ? $maxFactureId + 1 : 1;
-
-        $countTask = count($request->task_id);
-        if ($countTask != NULL) {
-            for ($i = 0; $i < $countTask; $i++) {
-                $service = new Technical_Task_Amount();
-                $service->technical_id = $request->technical_id;
-                $service->task_id = $request->task_id[$i];
-                $service->amount = $request->amount[$i];
-                $service->date = Carbon::now();
-                $service->facture_id = $nextFactureId; // Utiliser la variable
-                $service->created_by = Auth::user()->id;
-                $service->save();
-            }
-        }
-
-
-        $notification = array(
-            'message' => ' Service Create Successfully',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('service.index')->with($notification);
-    } //END METHOD
-
-
-    public function edit($facture_id)
-    {
-        $dateNow = date('Y-m-d');
-        // dd($dateNow);
-        $editData = Technical_Task_Amount::where('facture_id', $facture_id)->orderBy('task_id', 'asc')->get();
-        $data['editData'] = Technical_Task_Amount::where('facture_id', $facture_id)->orderBy('task_id', 'asc')->get();
-        // dd($data['editData'][0]);
-        $data['technicals'] = Technical::all();
-        $data['tasks'] = Task::all();
-        // dd($data['editData']);
-        if ($editData->isEmpty()) {
             $notification = array(
-                'message' => ' Tache non Disponible ',
-                'alert-type' => 'success'
-            );
-            return redirect()->back()->with($notification);
-        }
-
-        return view('frontend.service.edit', $data);
-    } //END METHOD
-
-    public function update(Request $request, $facture_id)
-    {
-        $request->validate([
-            'technical_id' => 'required',
-            'task_id' => 'required',
-            'amount' => 'required',
-        ]);
-
-        if ($request->task_id == NULL) {
-            $notification = array(
-                'message' => " Sorry, you don't selected any think",
+                'message' => ' Sorry! you do not select any item',
                 'alert-type' => 'error'
             );
-            redirect()->back()->with($notification);
-        } else {
 
-            Technical_Task_Amount::where('facture_id', $facture_id)->delete();
-            // dd($facture_id);
-            $countTask = count($request->task_id);
-            if ($countTask != NULL) {
-                for ($i = 0; $i < $countTask; $i++) {
-                    $service = new Technical_Task_Amount();
-                    $service->technical_id = $request->technical_id;
-                    $service->task_id = $request->task_id[$i];
-                    $service->amount = $request->amount[$i];
-                    $service->date = Carbon::now();
-                    $service->facture_id = $facture_id;
-                    $service->updated_by = Auth::user()->id;
-                    $service->save();
-                }
+            return  redirect()->back()->with($notification);
+        } else {
+            if ($request->paid_amount > $request->estimated_amount) {
+                $notification = array(
+                    'message' => ' Sorry! montant tres elevé a au montant total',
+                    'alert-type' => 'error'
+                );
+                return  redirect()->back()->with($notification);
+            } else {
+                $invoice = new Service();
+                $invoice->invoice_no = $request->invoice_no;
+                $invoice->date = date('Y-m-d', strtotime($request->date));
+                $invoice->description = $request->description;
+                $invoice->status = '0';
+                $invoice->created_by = Auth::user()->id;
+                DB::transaction(function () use ($request, $invoice) {
+                    if ($invoice->save()) {
+                        $count_technical = count($request->technical_id);
+                        for ($i = 0; $i < $count_technical; $i++) {
+                            $invoice_details = new ServiceDetail();
+                            $invoice_details->date = $request->date;
+                            $invoice_details->service_id = $invoice->id;
+                            $invoice_details->technical_id = $request->technical_id[$i];
+                            $invoice_details->task_id = $request->task_id[$i];
+                            $invoice_details->selling_qty = $request->selling_qty[$i];
+                            $invoice_details->unit_price = $request->unit_price[$i];
+                            $invoice_details->selling_price = $request->selling_price[$i];
+                            $invoice_details->status = '1';
+                            $invoice_details->save();
+                        }
+                        if ($request->customer_id == '0') {
+                            $customer = new Customer();
+                            $customer->name = $request->name;
+                            $customer->email = $request->email;
+                            $customer->address = $request->address;
+                            $customer->phone = $request->phone;
+                            $customer->save();
+                            $customer_id = $customer->id;
+                        } else {
+                            $customer_id = $request->customer_id;
+                        }
+                        $payment = new ServicePayment();
+                        $payment_details = new ServicePaymentDetail();
+                        $payment->service_id = $invoice->id;
+                        $payment->customer_id = $customer_id;
+                        $payment->paid_status = $request->paid_status;
+                        $payment->discount_amount = $request->discount_amount;
+                        $payment->total_amount = $request->estimated_amount;
+                        if ($request->paid_status == 'full_paid') {
+                            $payment->paid_amount = $request->estimated_amount;
+                            $payment->due_amount = '0';
+                            $payment_details->current_paid_amount = $request->estimated_amount;
+                        } elseif ($request->paid_status == 'full_due') {
+                            $payment->paid_amount = '0';
+                            $payment->due_amount = $request->estimated_amount;
+                            $payment_details->current_paid_amount = '0';
+                        } elseif ($request->paid_status == 'partial_paid') {
+                            $payment->paid_amount = $request->paid_amount;
+                            $payment->due_amount = $request->estimated_amount - $request->paid_amount;
+                            $payment_details->current_paid_amount = $request->paid_amount;
+                        }
+                        $payment->save();
+                        $payment_details->service_id = $invoice->id;
+                        $payment_details->date = date('Y-m-d', strtotime($request->date));
+                        $payment_details->save();
+                    }
+                });
+                $invoice->save();
+            }
+        }
+        $notification = array(
+            'message' => ' invoice save succeffully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('service.pending')->with($notification);
+    } // END METHOD
+
+    public function pendingList()
+    {
+        $allData = Service::orderBy('date', 'desc')->where('status', '0')->orderBy('id', 'desc')->get();
+        return view('frontend.services.pending', compact('allData'));
+    } //END METHOD
+
+    public function approveList($id)
+    {
+        $invoice = Service::with(['invoice_details'])->find($id);
+        // dd($invoice);
+        return view('frontend.services.approve', compact('invoice'));
+    } //END METHOD
+
+    public function approveStore(Request $request, $id)
+    {
+        foreach ($request->selling_qty as $key => $val) {
+            $invoice_details = ServiceDetail::where('id', $key)->first();
+            $task = Task::where('id', $invoice_details->task_id)->first();
+            if (!$task || !$invoice_details) {
+                $notification = array(
+                    'message' => 'Sorry!, tache non existante',
+                    'alert-type' => 'error'
+                );
+                return redirect()->back()->with($notification);
             }
         }
 
-
+        $invoice = Service::find($id);
+        $invoice->approved_by = Auth::user()->id;
+        $invoice->status = '1';
+        DB::transaction(function () use ($request, $invoice, $id) {
+            foreach ($request->selling_qty as $key => $val) {
+                $invoice_details = ServiceDetail::where('id', $key)->first();
+                $invoice_details->status = '1';
+                $invoice_details->save();
+            }
+            $invoice->save();
+        });
 
         $notification = array(
-            'message' => ' Service Updated Successfully',
+            'message' => ' Facture approuveé avec succes',
             'alert-type' => 'success'
         );
-
         return redirect()->route('service.index')->with($notification);
     } //END METHOD
 
-
-
-    public function details($technical_id)
+    public function printInvoice($id)
     {
-        $data['dateNow'] = Carbon::now();
-        $data['allData']  = DB::table('technical__task__amounts')
-            ->where('technical_id', $technical_id)
-            ->groupBy('date', 'facture_id')
-            ->selectRaw('date,facture_id, GROUP_CONCAT(task_id) as task_ids, SUM(amount) as total_amount')
-            // ->orderBy('date', 'desc')
-            ->orderBy('facture_id', 'desc')
-            ->get();
-        // dd($data);
-        $data['technical'] = Technical::find($technical_id);
-
-        return view('frontend.service.details', $data);
-    } //END METHOD
-
-    public function detailsFacturePrint($facture_id)
-    {
-        $data  = DB::table('technical__task__amounts')
-            ->where('facture_id', $facture_id)
-            ->groupBy('date', 'facture_id')
-            ->selectRaw('date,facture_id,GROUP_CONCAT(task_id) as task_ids, SUM(amount) as total_amount')
-            ->get();
-        $data['allData'] = $data[0];
-        // dd($data['allData']);
-        $pdf = PDF::loadView('frontend.pdf.servicePdf', $data);
+        $data['invoice'] = Service::with(['invoice_details'])->find($id);
+        $pdf = PDF::loadView('frontend.pdf.service', $data);
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('document.pdf');
     } //END METHOD
 
+
     public function delete($id)
     {
-        $supplier = Technical_Task_Amount::findOrFail($id);
-        $supplier->delete();
+        $invoice = Service::find($id);
+        $invoice->delete();
+        ServiceDetail::where('invoice_id', $invoice->id)->delete();
+        ServicePayment::where('invoice_id', $invoice->id)->delete();
+        ServicePaymentDetail::where('invoice_id', $invoice->id)->delete();
         $notification = array(
-            'message' => ' Service delete Successfully',
+            'message' => ' invoice delete succeffully',
             'alert-type' => 'error'
         );
-        return redirect()->route('service.index')->with($notification);
+        return redirect()->route('invoice.pending')->with($notification);
+    } //END METHOD
+
+    public function dailyReport()
+    {
+        return view('frontend.invoice.daily');
+    } //END METHOD
+
+    public function dailyReportPdf(Request $request)
+    {
+
+        $data['date'] = date('d-M-Y');
+        $sdate = date('Y-m-d', strtotime($request->start_date));
+        $edate = date('Y-m-d', strtotime($request->end_date));
+        $data['allData'] = Service::whereBetween('date', [$sdate, $edate])->where('status', '1')->get();
+        $data['start_date'] = date('Y-m-d', strtotime($request->start_date));
+        $data['end_date'] = date('Y-m-d', strtotime($request->end_date));
+        $pdf = PDF::loadView('frontend.pdf.daily', $data);
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
     } //END METHOD
 }

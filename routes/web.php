@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\InvoiceController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\PurchaseController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\ServiceControllerrr;
 use App\Http\Controllers\Backend\StockController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\TaskController;
@@ -175,20 +176,33 @@ Route::middleware('auth')->group(function () {
         Route::get('/delete/{id}', 'delete')->name('technical.delete');
     });
 
-    // services
-    Route::prefix('sercices')->controller(ServiceController::class)->group(function () {
+
+
+
+
+
+    // SERVICE
+    Route::prefix('service')->controller(ServiceController::class)->group(function () {
         Route::get('/view', 'index')->name('service.index');
         Route::get('/create', 'create')->name('service.create');
         Route::post('/store', 'store')->name('service.store');
-        Route::get('/edit/{facture_id}', 'edit')->name('service.edit');
-        Route::post('/update/{facture_id}', 'update')->name('service.update');
-        Route::get('/details/{technical_id}', 'details')->name('service.details');
+        Route::get('/en_attente', 'pendingList')->name('service.pending');
+        Route::get('/approve/{id}', 'approveList')->name('service.approve');
+        Route::post('/approve/store/{id}', 'approveStore')->name('service.approve.store');
+        Route::get('/delete/{id}', 'delete')->name('service.delete');
+        Route::get('/print/{id}', 'printInvoice')->name('service.print');
+        Route::get('/rapport/quotidien', 'dailyReport')->name('service.daily.report');
+        Route::get('/rapport/quotidien/pdf', 'dailyReportPdf')->name('service.daily.pdf');
 
-        Route::get('/details_facture/{facture_id}', 'detailsFacturePrint')->name('service.facture');
 
+        // Route::get('/edit/{id}', 'edit')->name('purchase.edit');
+        // Route::post('/update/{id}', 'update')->name('purchase.update');
 
         Route::get('/delete/{id}', 'delete')->name('service.delete');
     });
+
+
+
 
     // units
     Route::prefix('taches')->controller(TaskController::class)->group(function () {
@@ -206,6 +220,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/get-stock', [DefaultController::class, 'getStock'])->name('check-product-stock');
     Route::get('payments', [DefaultController::class, 'getPayment'])->name('modalDetails');
     Route::post('/update-payment', [DefaultController::class, 'updatePayment'])->name('update-payment');
+
+
+    // services
+    Route::get('service_payments', [DefaultController::class, 'service_getPayment'])->name('service_modalDetails');
+    Route::post('service/update-payment', [DefaultController::class, 'service_updatePayment'])->name('service_update-payment');
 });
 
 

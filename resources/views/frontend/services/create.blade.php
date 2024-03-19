@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Facturation</h4>
+            <h4 class="mb-sm-0">Service</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -26,7 +26,7 @@
 
                 <h3 class="card-title">
                     Creer une Facture
-                    <a href="{{route('invoice.index')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-list"></i> Listes des Factures</a>
+                    <a href="{{route('service.index')}}" class="float-right btn btn-success btn-sm"><i class="fa fa-list"></i> Listes des Factures</a>
                 </h3>
             </div>
 
@@ -48,27 +48,27 @@
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="category_id">Categorie</label>
-                            <select name="category_id" id="category_id" class="form-control">
-                                <option value="">Select categorie</option>
-                                @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            <label for="category_id">Techniciens</label>
+                            <!-- <select name="category_id" id="category_id" class="form-control"> -->
+                            <select name="technical_id" id="technical_id" class="form-control">
+                                <option value="">Selectionner techniciens</option>
+                                @foreach($techniciens as $tech)
+                                <option value="{{$tech->id}}">{{$tech->name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="product_id">Nom du Produit</label>
-                            <select name="product_id" id="product_id" class="form-control">
-                                <option value="">Select product</option>
-
+                            <label for="product_id">Taches</label>
+                            <!-- <select name="product_id" id="product_id" class="form-control"> -->
+                            <select name="task_id" id="task_id" class="form-control">
+                                <option value="">Selectionner une tache</option>
+                                @foreach($taches as $tach)
+                                <option value="{{$tach->id}}">{{$tach->name}}</option>
+                                @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-md-1">
-                            <label for="date" style="font-weight: bold; color: black;">Stocks </label>
-                            <input type="text" name="current_stock_qty" id="current_stock_qty" class="form-control" readonly style="background-color: #D8FDBA;">
 
-                        </div>
                         <div class="form-group  col-md-2" style="padding-top: 30px;">
                             <a href="#" class="btn float-right btn-success addeventmore"><i class="fa fa-plus-circle"></i> Ajouter</a>
                         </div>
@@ -78,14 +78,14 @@
 
             <!-- form start -->
             <div class="card-body">
-                <form action="{{route('invoice.store')}}" method="post" id="myForm">
+                <form action="{{route('service.store')}}" method="post" id="myForm">
                     @csrf
                     <table class="table-sm table-bordered border-dark" width="100%">
                         <thead>
                             <tr>
-                                <th>Catégorie</th>
-                                <th>Nom du Produit</th>
-                                <th width="7%">Quantité</th>
+                                <th>Technicien</th>
+                                <th>Tash</th>
+                                <th width="7%">Quantite</th>
                                 <th width="10%">Prix U.</th>
                                 <th width="17%">Prix Total</th>
                                 <th width="10%">Action</th>
@@ -150,7 +150,7 @@
                             <input type="email" name="email" id="email" class="form-control" placeholder="email">
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="text" name="addresse" id="addresse" class="form-control" placeholder="addresse">
+                            <input type="text" name="address" id="addresse" class="form-control" placeholder="addresse">
                         </div>
                         <div class="form-group col-md-4">
                             <input type="text" name="phone" id="phone" class="form-control" placeholder="phone">
@@ -180,12 +180,17 @@
                 <input type="hidden" name="date" value="@{{date}}">
                 <input type="hidden" name="invoice_no" value="@{{invoice_no}}">
                 <td>
-                    <input type="hidden" name="category_id[]" value="@{{category_id}}" id="">
-                    @{{category_name}}
+                    <!-- <input type="hidden" name="category_id[]" value="@{{category_id}}" id=""> -->
+                    <!-- @{{category_name}} -->
+                     <input type="hidden" name="technical_id[]" value="@{{technical_id}}" id=""> 
+                     <!-- @{{category_name}}  -->
+                     @{{technical_name}} 
                 </td>
                 <td>
-                    <input type="hidden" name="product_id[]" value="@{{product_id}}" id="">
-                    @{{product_name}}
+                    <!-- <input type="hidden" name="product_id[]" value="@{{product_id}}" id=""> -->
+                    <!-- @{{product_name}} -->
+                    <input type="hidden" name="task_id[]" value="@{{task_id}}" id=""> 
+                         @{{task_name}}
                 </td>
                 <td>
                     <input type="number" min="1" class="form-control form-control-sm text-right selling_qty" name="selling_qty[]" value="1" id="">
@@ -208,10 +213,10 @@
                 $(document).on("click", ".addeventmore", function() {
                     var date = $('#date').val();
                     var invoice_no = $('#invoice_no').val();
-                    var category_id = $('#category_id').val();
-                    var category_name = $('#category_id').find('option:selected').text();
-                    var product_id = $('#product_id').val();
-                    var product_name = $('#product_id').find('option:selected').text();
+                    var technical_id = $('#technical_id').val();
+                    var technical_name = $('#technical_id').find('option:selected').text();
+                    var task_id = $('#task_id').val();
+                    var task_name = $('#task_id').find('option:selected').text();
                     if (date == '') {
                         $.notify("date is required", {
                             globalPosition: 'top right',
@@ -220,15 +225,15 @@
                         return false;
                     }
 
-                    if (category_id == '') {
-                        $.notify("category is required", {
+                    if (technical_id == '') {
+                        $.notify("technical is required", {
                             globalPosition: 'top right',
                             className: "error"
                         });
                         return false;
                     }
-                    if (product_id == '') {
-                        $.notify("product is required", {
+                    if (task_id == '') {
+                        $.notify("task is required", {
                             globalPosition: 'top right',
                             className: "error"
                         });
@@ -239,10 +244,10 @@
                     var data = {
                         date: date,
                         invoice_no: invoice_no,
-                        category_id: category_id,
-                        category_name: category_name,
-                        product_id: product_id,
-                        product_name: product_name
+                        technical_id: technical_id,
+                        technical_name: technical_name,
+                        task_id: task_id,
+                        task_name: task_name
                     };
                     var html = template(data);
                     $("#addRow").append(html);
@@ -285,16 +290,16 @@
         </script>
 
 
-        <script>
+        <!-- <script>
             $(function() {
 
                 $(document).on("change", '#category_id', function() {
-                    var category_id = $(this).val();
+                    var technical_id = $(this).val();
                     $.ajax({
                         url: "{{route('get-product')}}",
                         type: "GET",
                         data: {
-                            category_id: category_id
+                            technical_id: technical_id
                         },
                         success: function(data) {
                             var html = '<option value="">Select Product</option>'
@@ -306,9 +311,9 @@
                     })
                 })
             });
-        </script>
+        </script> -->
 
-        <script>
+        <!-- <script>
             $(function() {
                 $(document).on('change', '#product_id', function() {
                     var product_id = $(this).val();
@@ -324,7 +329,7 @@
                     })
                 })
             })
-        </script>
+        </script> -->
 
         <script>
             $(document).ready(function() {

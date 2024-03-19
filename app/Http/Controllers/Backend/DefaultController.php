@@ -7,6 +7,9 @@ use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\PaymentDetail;
 use App\Models\Product;
+use App\Models\Service;
+use App\Models\ServicePayment;
+use App\Models\ServicePaymentDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -72,6 +75,66 @@ class DefaultController extends Controller
                 if ($payment->save()) {
                     $newPaymentDetails = new PaymentDetail();
                     $newPaymentDetails->invoice_id = $invoiceId;
+                    $newPaymentDetails->current_paid_amount = $paidAmount;
+                    $newPaymentDetails->date = now();
+                    $newPaymentDetails->save();
+                }
+            }
+        );
+        if ($payment->paid_status = 'full_paid') {
+            # code...
+            $invoiceUpdate->save();
+        }
+
+        // Effectuez les opérations nécessaires pour mettre à jour les champs dans la base de données
+
+        return response()->json(['message' => 'Paiement effectue avec succès .']);
+    } // END METHOD
+
+
+
+
+    //    OBTENIR LES DETAILS DE PAYMENTS SERVICES
+    public function service_getPayment(Request $request)
+    {
+
+        $invoiceId = $request->input('invoice_id');
+        $fullDataPay = ServicePayment::where('service_id', $invoiceId)->first();
+
+        $payments = ServicePaymentDetail::where('service_id', $invoiceId)->get();
+        // $payments = PaymentDetail::all();
+
+        return response()->json([
+            'payments' => $payments,
+            'invoiceId' => $invoiceId,
+            'fullDataPay' => $fullDataPay
+        ]);
+    } // END METHOD
+
+
+    // METTRE A JOUR LES PAIEMENTS SERRVICES
+    public function service_updatePayment(Request $request)
+    {
+
+        $invoiceId = $request->input('invoice_id');
+        $paidAmount = $request->input('paid_amount');
+        $invoiceUpdate = Service::find($invoiceId);
+        $payment = ServicePayment::where('service_id', $invoiceId)->firstOrFail();
+        $existPaidAmount = $payment->paid_amount;
+        $existDueAmount = $payment->due_amount;
+        $payment->paid_amount =  $paidAmount + $existPaidAmount;
+        $payment->due_amount = $existDueAmount - $paidAmount;
+        if ($existDueAmount == $paidAmount) {
+            $payment->paid_status = 'full_paid';
+            $invoiceUpdate->livraison = '0';
+        }
+        DB::transaction(
+            function () use ($request, $payment) {
+                $invoiceId = $request->input('invoice_id');
+                $paidAmount = $request->input('paid_amount');
+                if ($payment->save()) {
+                    $newPaymentDetails = new ServicePaymentDetail();
+                    $newPaymentDetails->service_id = $invoiceId;
                     $newPaymentDetails->current_paid_amount = $paidAmount;
                     $newPaymentDetails->date = now();
                     $newPaymentDetails->save();

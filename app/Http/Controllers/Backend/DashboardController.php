@@ -39,11 +39,21 @@ class DashboardController extends Controller
         $data = DB::table('payments')
             ->whereBetween('created_at', [$startDate, $endDate])
             ->get();
+
+        // pour Service
+        $data_service = DB::table('service_payments')
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->get();
+
         $payDetail = DB::table('payment_details')
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->get();
+        // pour Service
+        $payDetail_services = DB::table('service_payment_details')
             ->whereBetween('created_at', [$startDate, $endDate])
             ->get();
 
 
-        return response()->json([$data, $payDetail]); // Retournez les données au format JSON
+        return response()->json([$data, $payDetail, $data_service, $payDetail_services]); // Retournez les données au format JSON
     }
 }

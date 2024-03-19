@@ -147,13 +147,15 @@
                         <li><a href="{{route('task.create')}}">Ajouter Une Tache</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-cog"></i>
+                        </i><i class="ri-coins-fill"></i>
                         <span>Services</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('service.index')}}">Liste des Services</a></li>
+                        <li><a href="{{route('service.index')}}">Liste Services</a></li>
+                        <li><a href="{{route('service.pending')}}"> Services en Attentes</a></li>
                         <li><a href="{{route('service.create')}}">Ajouter Un Service</a></li>
                     </ul>
                 </li>
